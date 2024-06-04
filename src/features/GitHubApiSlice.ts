@@ -4,16 +4,19 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 interface Repo {
   countStars: number
   repo: string
+  countRepos: number
 }
 
 interface UserApiResponse {
   repos: Repo[]
   nickname: string
+  users: string[]
+  login: string
 }
 
 // Define a service using a base URL and expected endpoints
 export const githubApiSlice = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: "https://api.github.com/users" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://api.github.com/" }),
   reducerPath: "usersApi",
   // Tag types are used for caching and invalidation.
   tagTypes: ["Users", "Repos"],
@@ -21,15 +24,15 @@ export const githubApiSlice = createApi({
    //Supply generics for the return type (in this case `QuotesApiResponse`)
     //and the expected query argument. If there is no argument, use `void`
     //for the argument type instead.
-    getUsers: build.query<UserApiResponse, number>({
+    getUsers: build.query<UserApiResponse, string>({
       query: (nickname) => `users/${nickname}`,
       // `providesTags` determines which 'tag' is attached to the
       // cached data returned by the query.
-      providesTags: (result, error, id) => [{ type: "Users", id }],
+      providesTags: ['Users'],
     }),
-    getRepos: build.query<Repo[], number>({
-      query: (repo) => `repos/${repo}`,
-      providesTags: (result, error, id) => [{ type: "Repos", id }],
+    getRepos: build.query<UserApiResponse, string>({
+      query: (nickname) => `users/${nickname}/repos`,
+      providesTags: ['Users'],
     })
   }),
 })

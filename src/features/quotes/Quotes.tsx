@@ -51,7 +51,9 @@ export const Quotes = () => {
             </footer>
           </blockquote>
         ))}
-      </div>
+      
+      
+    </div>
     )
   }
 
