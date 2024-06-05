@@ -1,7 +1,7 @@
 # Fractal Web
 Мини-приложение с текстовым инпутом и селектом, которое извлекает если в селекте:
--user: input:{nickname} output:" Имя, Число репозиториев "
--repo: input:{nickname/repository} output:" Имя репозитория, Количество звёзд "
+- user: input:{nickname} output:" Имя, Число репозиториев "
+- repo: input:{nickname/repository} output:" Имя репозитория, Количество звёзд "
 
 ## Scripts
 
