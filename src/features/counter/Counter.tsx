@@ -10,7 +10,7 @@ import {
   incrementIfOdd,
   selectCount,
   selectStatus,
-} from "./counterSlice"
+} from "./storageSlice"
 
 export const Counter = () => {
   const dispatch = useAppDispatch()
